@@ -1,23 +1,7 @@
 #include <iostream>
+#include "class.h"
 
 using namespace std;
-
-class Account {
-	public:
-		Account(int a,int b ,int c);
-		void PPP();
-	private:
-		int a;
-		int b;
-		int c;
-
-};
-
-//Account::Account(int ddd)
-//{
-//	cout<<"I am DDD"<<endl;
-//	cout<<ddd<<endl;
-//}
 
 Account::Account(int a,int b ,int c)
 {

@@ -18,8 +18,13 @@ void Account::PPP()
 
 int main(){
 	Account act = {40, 20 ,30};
-	cout<< endl;
 	cout<<"Hello World"<<endl;
 	act.PPP();
+
+
+	keydev.bt_mac[0] = 10;
+	printf("%d",keydev.bt_mac[0]);
+
+
 	return 0;
 }

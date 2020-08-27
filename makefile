@@ -1,5 +1,6 @@
 all:
-	g++ class.cpp -o class
+	g++ class.cpp airoha_dev.cpp -o class
+
 
 clean:
 	rm class

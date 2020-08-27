@@ -11,11 +11,11 @@ class Account {
 
 typedef bool (*CALLBACK)(char *str,int *error_code);
 typedef struct _DevFunc{
-	CALLBACK INIT;
-	CALLBACK GET_MAC;
-	CALLBACK GET_NAME;
-	CALLBACK GET_KEY;
-	CALLBACK WRITE_KEY;
+	CALLBACK init;
+	CALLBACK get_mac;
+	CALLBACK get_name;
+	CALLBACK get_key;
+	CALLBACK write_key;
 }DevFunc;
 
 class KeyProDev{
@@ -25,5 +25,5 @@ class KeyProDev{
 		unsigned char bt_name[40];
 		unsigned char key[128];
 };
+extern KeyProDev keydev;
 
-KeyProDev keydev;

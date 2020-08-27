@@ -7,8 +7,10 @@ typedef struct _DevFunc{
 	CALLBACK get_uuid;
 	CALLBACK get_name;
 	CALLBACK get_key;
+	CALLBACK write_name;
 	CALLBACK write_key;
-}DevFunc;
+	CALLBACK deinit;
+}__attribute__((packed)) DevFunc;
 
 class KeyProDev{
 	public:

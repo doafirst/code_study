@@ -32,9 +32,21 @@ bool bes_get_key(char *str,int *error_code)
 	return 0;
 }
 
+bool bes_write_name(char *str,int *error_code)
+{
+	printf("bes_write_name \n");
+	return 0;
+}
+
 bool bes_write_key(char *str,int *error_code)
 {
-	printf("bes_write_key \n");
+	printf("bes_write_key\n");
+	return 0;
+}
+
+bool bes_deinit(char *str,int *error_code)
+{
+	printf("bes_deinit \n");
 	return 0;
 }
 
@@ -45,5 +57,7 @@ DevFunc bes_dev_func = {
 	,bes_get_uuid
 	,bes_get_name
 	,bes_get_key
+	,bes_write_name
 	,bes_write_key
+	,bes_deinit
 };

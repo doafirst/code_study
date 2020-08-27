@@ -1,5 +1,5 @@
 all:
-	g++ class.cpp -o class
+	gcc main.c -o main
 
 clean:
 	rm class

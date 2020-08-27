@@ -1,5 +1,5 @@
 all:
-	g++ class.cpp airoha_dev.cpp -o class
+	g++ class.cpp airoha_dev.cpp bes_dev.cpp -o class
 
 
 clean:

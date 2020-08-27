@@ -5,7 +5,7 @@
 char * intToRoman(int num){
 	int slash_num=0,cnt=0;	
 	static char roma_str[40];
-
+	memset (roma_str,0,40);
 	if(  (num/1000) > 0)
 	{
 		slash_num = num/1000;
@@ -39,6 +39,15 @@ char * intToRoman(int num){
 				slash_num=slash_num - 5;
 				continue;
 			}
+			if(slash_num == 4)
+			{
+				roma_str[cnt]='C';
+				cnt++;
+				roma_str[cnt]='D';
+				cnt++;
+				slash_num=0;
+				continue;
+			}
 			roma_str[cnt]='C';
 			slash_num--;
 			cnt++;
@@ -66,6 +75,15 @@ char * intToRoman(int num){
 				slash_num=slash_num - 5;
 				continue;
 			}
+			if(slash_num == 4)
+			{
+				roma_str[cnt]='X';
+				cnt++;
+				roma_str[cnt]='L';
+				cnt++;
+				slash_num=0;
+				continue;
+			}
 			roma_str[cnt]='X';
 			slash_num--;
 			cnt++;
@@ -91,6 +109,15 @@ char * intToRoman(int num){
 				roma_str[cnt]='V';
 				cnt++;
 				slash_num=slash_num - 5;
+				continue;
+			}
+			if(slash_num == 4)
+			{
+				roma_str[cnt]='I';
+				cnt++;
+				roma_str[cnt]='V';
+				cnt++;
+				slash_num=0;
 				continue;
 			}
 			roma_str[cnt]='I';

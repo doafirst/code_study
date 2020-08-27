@@ -1,35 +1,22 @@
 #include <iostream>
 #include "class.h"
+#include "memory.h"
 
 using namespace std;
 KeyProDev keydev;
 
-Account::Account(int a,int b ,int c)
-{
-	this->a = a;
-	this->b = b;
-	//this->c = c;
-}
-
-void Account::PPP()
-{
-        cout<<"I am PPP"<<endl;
-	cout<<this->a<<endl;
-}
-
-extern bool airoha_int(char *str,int *error_code);
-
+extern DevFunc airo_dev_func;
 int main(){
 	int gg;
-	char txt;
-	Account act = {40, 20 ,30};
-	cout<<"Hello World"<<endl;
-	act.PPP();
-
-	keydev.dev_func.write_key = airoha_int;
-	keydev.bt_mac[0] = 10;
-	printf("%d",keydev.bt_mac[0]);
-	keydev.dev_func.write_key("haha",&gg);
+	char g[] = "HELLO";
+	memcpy(&keydev.dev_func,&airo_dev_func, sizeof(airo_dev_func) );
+	printf("Platform:%s\n",keydev.dev_func.platform_name);
+	keydev.dev_func.init(g,&gg);
+	keydev.dev_func.get_mac(g,&gg);
+	keydev.dev_func.get_uuid(g,&gg);
+	keydev.dev_func.get_name(g,&gg);
+	keydev.dev_func.get_key(g,&gg);
+	keydev.dev_func.write_key(g,&gg);
 
 	return 0;
 }

@@ -3,47 +3,22 @@
 #include <string.h>
 #include <stdbool.h>
 
-int longestValidParentheses(char * s){
-    //printf("str %d",strlen(s));
-    int length = strlen(s);
-    int quate_a=0;
-    int i=0;
-    int sum=0;
-    int sum_max=0;
-    for(i=0;i<length;i++)
-    {
-        //printf("\n%d %c",i,s[i]);
-        if(s[i] == '(')
-        {
-            quate_a++;
-        }
-        if(s[i] == ')')
-        {
-            if(quate_a > 0)
-            {    
-                quate_a--;
-                sum+=2;
-            }
-            else
-            {
-                sum = 0;
-            }
-            if(sum>sum_max)
-            {
-                sum_max = sum;
-            }
-        }
-        if(i== (length-1) && quate_a > 0)
-        {
-            
-        }
-    }
+int test(char ** s){
 
-    return sum_max;
 }
 
-int main(){
-	int s;
-	s = longestValidParentheses("()()");
-	printf("%d\n",s);
+int main(int argc ,char **argv){
+	char a[2][10]={"hello","OK"};
+	//s = test();
+	printf("%s %s \n",a[0],a[1]);
+
+	printf("addr line1 = %x %x\n",argv,argv+1);
+	printf("addr line2 = %x %x\n",*argv,*(argv+1));
+	printf("argc = %d\n",argc);
+	for(int i =0 ; i < argc ; i++)
+	{
+		printf("addr = %x\n",argv[i]);
+		printf("argv%d = %s\n",i,argv[i]);
+		printf("\n");
+	}
 }

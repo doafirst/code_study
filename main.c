@@ -11,36 +11,47 @@ int longestValidParentheses(char * s){
     int i=0;
     int sum=0;
     int sum_max=0;
-    for(i=0;i<length;i++)
+    int index = 0;
+    for(index=0;index<(length-1);index++)
     {
-        //printf("\n%d %c",i,s[i]);
-        if(s[i] == '(')
+        //printf("index=%d\n",index);
+        sum = 0;
+        quate_a = 0;
+        quate_b = 0;
+        if(s[index] == ')')
+            continue;
+        for(i=index;i<length;i++)
         {
-            quate_a++;
-        }
-        if(s[i] == ')')
-        {
-            if(quate_a > 0)
-            {    
-                quate_a--;
-                quate_b++;
-                if(quate_a == 0)
-                {
-                    sum=sum+quate_b*2;
-                    quate_b=0;
+            //printf("\n%d %c",i,s[i]);
+            if(s[i] == '(')
+            {
+                quate_a++;
+            }
+            if(s[i] == ')')
+            {
+                if(quate_a > 0)
+                {    
+                    quate_a--;
+                    quate_b++;
+                    if(quate_a == 0)
+                    {
+                        sum=sum+quate_b*2;
+                        quate_b=0;
+                        //printf("sum %d\n",sum);
+                    }
                 }
+                else
+                {
+                    break;
+                }
+
             }
-            else
-            {
-                break;
-            }
-            if(sum>sum_max)
-            {
-                sum_max = sum;
-            }
+        }
+        if(sum>sum_max)
+        {
+            sum_max = sum;
         }
     }
-
     return sum_max;
 }
 

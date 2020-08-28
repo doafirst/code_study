@@ -7,6 +7,7 @@ int longestValidParentheses(char * s){
     //printf("str %d",strlen(s));
     int length = strlen(s);
     int quate_a=0;
+    int quate_b=0;
     int i=0;
     int sum=0;
     int sum_max=0;
@@ -22,20 +23,21 @@ int longestValidParentheses(char * s){
             if(quate_a > 0)
             {    
                 quate_a--;
-                sum+=2;
+                quate_b++;
+                if(quate_a == 0)
+                {
+                    sum=sum+quate_b*2;
+                    quate_b=0;
+                }
             }
             else
             {
-                sum = 0;
+                break;
             }
             if(sum>sum_max)
             {
                 sum_max = sum;
             }
-        }
-        if(i== (length-1) && quate_a > 0)
-        {
-            
         }
     }
 
@@ -44,6 +46,6 @@ int longestValidParentheses(char * s){
 
 int main(){
 	int s;
-	s = longestValidParentheses("()()");
+	s = longestValidParentheses("()()((()())(((()()()()");
 	printf("%d\n",s);
 }

@@ -3,40 +3,86 @@
 #include <string.h>
 #include <stdbool.h>
 
-int test(char ** s){
+typedef struct _node{
+	int val;
+	struct _node *next;
+	struct _node *pre;
+}node;
 
+node *head1;
+node *head=NULL;
+void push_s(int value)
+{
+
+	if(NULL==head)
+	{
+		head=calloc(0,sizeof(node));
+		head1 = head;
+		head->val = value;
+		printf("addr1 %lx\n",head);
+	}
+	else
+	{
+		head->next=calloc(0,sizeof(node));
+		head->next->val = value;
+		head->next->pre = head;
+		head = head->next;
+		printf("addr2 %lx\n",head);
+	}
 }
 
-int main(int argc ,char **argv){
-	//char a[2][10]={"hello","OK"};
-	//s = test();
-	//printf("%s %s \n",a[0],a[1]);
-	char *a[2];
-	printf("================String In Array================\n");
-	a[0] = malloc(strlen("HAHA")+1);
-	a[1] = malloc(strlen("IM OOK")+1);
-	a[0] = "HAHA";
-	a[1] = "IM OOK";
-	printf("%s %s \n",a[0],a[1]);
-	printf("a[0] -> %x %x \n",a,a[0]);
-	printf("a[1] -> %x %x \n",a+1,a[1]);
-
-	printf("================Double Array================\n");
-	char b[10][20];
-	printf("b = %x\n",b);
-	printf("b[0] = %x\n",b[0]);
-	printf("&b[0][1] = %x\n",&b[0][1]);
-	printf("&b[0][19] = %x\n",&b[0][19]);
-	printf("b[1] = %x\n",b[1]);
-	printf("================ARGC ARGC================\n");
+void pop_s(){
 	
-	printf("addr line1 = %x %x\n",argv,argv+1);
-	printf("addr line2 = %x %x\n",*argv,*(argv+1));
-	printf("argc = %d\n",argc);
-	for(int i =0 ; i < argc ; i++)
+	if(head != NULL)
 	{
-		printf("addr = %x\n",argv[i]);
-		printf("argv%d = %s\n",i,argv[i]);
-		printf("\n");
+		printf("pop %d",head->val);
+		if( head->pre!=NULL)
+		{
+			head = head->pre;
+			free(head->next);
+			printf("Normal FREE\n");
+		}
+		else if(head->pre == NULL)
+		{
+			free(head);
+			head = NULL;
+			printf("Final FREE\n");
+		}
 	}
+	else 
+		printf("NULL DATA");
+}
+
+void print_s(void){
+	
+	while(head1 != NULL)
+	{
+		printf("%d->",head1->val);
+		head1 = head1->next;
+	}
+	printf("\n");
+}
+
+int main(){
+	char s[20];
+	int value;
+
+	while(1)
+	{
+	scanf("%s",s);
+	if(0==strcmp(s,"push"))
+		{
+		printf("please push to stack\n");
+		scanf("%d",&value);
+		printf("%s %d\n",s,value);
+		push_s(value);	
+		}
+	if(0==strcmp(s,"pop"))
+                {
+                printf("please pop to stack dd\n");
+		//print_s();
+		pop_s();
+                }
+	}
+
 }
